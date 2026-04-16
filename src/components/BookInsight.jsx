@@ -1,8 +1,7 @@
 import { useState } from 'react'
 
 /**
- * Collapsible card showing a short interpretation from the book.
- * Interpretations are 3-5 sentences so no expand/collapse needed.
+ * Collapsible book interpretation card — light theme.
  * Returns null when the entry isn't found in the data file.
  */
 export default function BookInsight({ chunk }) {
@@ -11,38 +10,44 @@ export default function BookInsight({ chunk }) {
   if (!chunk) return null
 
   return (
-    <div className="border-l-4 border-amber-400 bg-amber-50 rounded-r-xl mt-3">
+    <div style={{
+      borderLeft: '3px solid var(--accent)',
+      background: 'var(--accent-dim)',
+      borderRadius: 'var(--radius-sm)',
+      marginTop: 16,
+      overflow: 'hidden',
+    }}>
       {/* ── Header ── */}
-      <button
+      <div
+        role="button"
+        tabIndex={0}
         onClick={() => setIsOpen(o => !o)}
-        className="w-full flex items-center justify-between px-4 py-3 text-left
-                   hover:bg-amber-100/60 transition-colors"
+        onKeyDown={e => e.key === 'Enter' && setIsOpen(o => !o)}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 8,
+          padding: '12px 16px', cursor: 'pointer',
+        }}
       >
-        <div className="flex items-start gap-2 min-w-0">
-          <span className="text-base leading-none mt-0.5 flex-shrink-0">📖</span>
-          <div className="min-w-0">
-            <p className="font-medium text-gray-800 text-sm leading-snug">{chunk.label}</p>
-            <p className="text-xs text-gray-400 mt-0.5 truncate">{chunk.chapter}</p>
-          </div>
-        </div>
-        <span
-          className="text-gray-400 text-sm ml-3 flex-shrink-0 transition-transform duration-200 inline-block"
-          style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
-        >
-          ▸
+        <span style={{ color: 'var(--accent)', fontSize: 12, flexShrink: 0 }}>✦</span>
+        <span style={{ fontSize: 13, color: 'var(--text-2)', flex: 1 }}>{chunk.label}</span>
+        <span style={{ color: 'var(--text-3)', fontSize: 13, flexShrink: 0 }}>
+          {isOpen ? '▾' : '▸'}
         </span>
-      </button>
+      </div>
 
       {/* ── Body ── */}
       {isOpen && (
-        <div className="px-4 pb-4">
-          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+        <div style={{ background: 'var(--bg-card)' }}>
+          <div style={{ padding: '0 16px 16px', fontSize: 14, color: 'var(--text-1)', lineHeight: 1.75, fontWeight: 400 }}>
             {chunk.interpretation}
-          </p>
-
-          {/* Citation */}
-          <div className="text-xs italic text-gray-400 border-t border-amber-100 pt-2 mt-3">
-            Nguồn: {chunk.source} · {chunk.chapter}
+          </div>
+          <div style={{
+            margin: '0 16px 16px',
+            paddingTop: 10,
+            borderTop: '1px solid var(--border)',
+            fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic',
+          }}>
+            {chunk.source} · {chunk.chapter}
           </div>
         </div>
       )}
