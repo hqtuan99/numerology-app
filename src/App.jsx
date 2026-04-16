@@ -6,6 +6,8 @@ import {
   getFourPeaks,
   getPersonalYear,
 } from './lib/numerology'
+import BookInsight from './components/BookInsight'
+import { getInterpretation, getBirthDayKey } from './lib/bookLookup'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -422,6 +424,7 @@ export default function App() {
                   {name.trim()} · {day}/{month}/{year}
                 </p>
               </div>
+              <BookInsight chunk={getInterpretation('life_path', results.lifePath)} />
             </div>
 
             {/* Section 2 — Biểu đồ ngày sinh */}
@@ -474,6 +477,7 @@ export default function App() {
                   </span>
                 )}
               </div>
+              <BookInsight chunk={getInterpretation('birth_day', getBirthDayKey(+day))} />
             </div>
 
             {/* Section 3 — Bốn đỉnh cao */}
@@ -485,6 +489,7 @@ export default function App() {
                 peaksData={results.peaksData}
                 birthYear={results.birthYear}
               />
+              <BookInsight chunk={getInterpretation('four_peaks', null)} />
             </div>
 
             {/* Section 4 — Năm cá nhân */}
@@ -492,27 +497,33 @@ export default function App() {
               <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-4">
                 Năm cá nhân
               </p>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="space-y-3">
                 {results.personalYears.map(({ year: yr, pyn }) => {
                   const isCurrent = yr === TODAY_YEAR
                   return (
-                    <div
-                      key={yr}
-                      className={`rounded-xl border-2 p-4 text-center transition
-                        ${isCurrent
-                          ? 'border-indigo-400 bg-indigo-50'
-                          : 'border-gray-200 bg-gray-50'
-                        }`}
-                    >
-                      <p className={`text-xs font-semibold mb-1 ${isCurrent ? 'text-indigo-500' : 'text-gray-400'}`}>
-                        {yr}
-                      </p>
-                      <p className={`text-4xl font-bold ${isCurrent ? 'text-indigo-700' : 'text-gray-700'}`}>
-                        {pyn}
-                      </p>
-                      {isCurrent && (
-                        <p className="text-[10px] text-indigo-400 mt-1 font-medium">Năm hiện tại</p>
-                      )}
+                    <div key={yr}>
+                      <div
+                        className={`rounded-xl border-2 px-5 py-4 flex items-center gap-5 transition
+                          ${isCurrent
+                            ? 'border-indigo-400 bg-indigo-50'
+                            : 'border-gray-200 bg-gray-50'
+                          }`}
+                      >
+                        <div className="text-center w-16 flex-shrink-0">
+                          <p className={`text-xs font-semibold mb-0.5 ${isCurrent ? 'text-indigo-500' : 'text-gray-400'}`}>
+                            {yr}
+                          </p>
+                          <p className={`text-4xl font-bold ${isCurrent ? 'text-indigo-700' : 'text-gray-700'}`}>
+                            {pyn}
+                          </p>
+                          {isCurrent && (
+                            <p className="text-[9px] text-indigo-400 mt-0.5 font-medium">Hiện tại</p>
+                          )}
+                        </div>
+                        <div className="h-10 w-px bg-gray-200 flex-shrink-0" />
+                        <p className="text-sm text-gray-500">Năm cá nhân số {pyn}</p>
+                      </div>
+                      <BookInsight chunk={getInterpretation('personal_year', pyn)} />
                     </div>
                   )
                 })}
