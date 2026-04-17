@@ -6,8 +6,8 @@ import { getInterpretation } from '../lib/bookLookup'
 
 const CELL = 100 // px
 
-// Grid top-to-bottom, left-to-right: 7 8 9 / 4 5 6 / 1 2 3
-const GRID_ROWS = [[7, 8, 9], [4, 5, 6], [1, 2, 3]]
+// Grid top-to-bottom, left-to-right: 3 6 9 / 2 5 8 / 1 4 7
+const GRID_ROWS = [[3, 6, 9], [2, 5, 8], [1, 4, 7]]
 
 const ROW_BG = ['var(--row-top)', 'var(--row-mid)', 'var(--row-bot)']
 
