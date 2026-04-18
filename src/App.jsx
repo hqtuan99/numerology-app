@@ -185,7 +185,7 @@ export default function App() {
           <h1 style={{
             fontFamily: "'DM Serif Display', serif", fontSize: 28,
             color: 'var(--text-1)', fontWeight: 700, margin: 0,
-          }}>Khám phá con số vận mệnh</h1>
+          }}>Quản trị cuộc sống với Nhân số học</h1>
         </div>
 
         {/* ── Saved people ── */}
@@ -359,7 +359,7 @@ export default function App() {
             </div>
 
             <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-3)', paddingBottom: 40 }}>
-              Nhân Số Học Pythagorean · Lê Đỗ Quỳnh Hương
+              Nhân Số Học Pythagorean · Team MayQ Share
             </p>
           </>
         )}
