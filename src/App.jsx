@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import logo from './img/logo.png'
 import {
   getLifePathNumber,
   getBirthChart,
@@ -184,11 +185,16 @@ export default function App() {
 
         {/* ── Top bar ── */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
+          <img
+            src={logo}
+            alt="MayQ Share"
+            style={{ height: 72, objectFit: 'contain', marginBottom: 16 }}
+          />
           <div style={{ fontSize: 11, color: 'var(--accent)', letterSpacing: '0.2em', marginBottom: 8 }}>
             NHÂN SỐ HỌC PYTHAGOREAN
           </div>
           <h1 style={{
-            fontFamily: "'DM Serif Display', serif", fontSize: 28,
+            fontFamily: "'Be Vietnam Pro', sans-serif", fontSize: 26,
             color: 'var(--text-1)', fontWeight: 700, margin: 0,
           }}>Quản trị cuộc sống với Nhân số học</h1>
         </div>
@@ -275,7 +281,7 @@ export default function App() {
               fontFamily: "'Inter', sans-serif",
               transition: 'opacity 0.2s',
             }}>
-              Tính toán
+              Vẽ biểu đồ
             </button>
             {results && (
               <button onClick={savePerson} style={{
