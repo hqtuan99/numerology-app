@@ -73,12 +73,12 @@ function PeakNode({ cx, cy, index, peak, age, year, isFour }) {
         fontFamily="'DM Serif Display', serif">{peak}</text>
       {/* Age */}
       <text x={cx} y={cy + 22} textAnchor="middle" fontSize="10"
-        fill="#64748b" fontFamily="'Inter', sans-serif">
+        fill="#1e293b" fontWeight="500" fontFamily="'Inter', sans-serif">
         {age} tuổi
       </text>
       {/* Year — inside box (cy+32 < cy+36) */}
       <text x={cx} y={cy + 33} textAnchor="middle" fontSize="9"
-        fill="#b0bac9" fontFamily="'Inter', sans-serif">
+        fill="#6366f1" fontFamily="'Inter', sans-serif">
         {year}
       </text>
     </g>
