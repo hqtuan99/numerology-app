@@ -60,9 +60,12 @@ export default function BirthChart({ dateChart, nameChart, hoChart, name }) {
   const [layer, setLayer] = useState(1)
 
   const words = name.trim().split(/\s+/).filter(Boolean)
+  const tenDisplay = words.length >= 4
+    ? words.slice(-2).join(' ')
+    : words.slice(1).join(' ')
   const tabLabels = [
     'Ngày sinh',
-    words.length > 1 ? `+ ${words.slice(1).join(' ')}` : '+ Tên',
+    words.length > 1 ? `+ ${tenDisplay}` : '+ Tên',
     `+ ${name.trim()}`,
   ]
 

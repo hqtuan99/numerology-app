@@ -27,7 +27,12 @@ const MONTHS_VI = [
 function splitName(fullName) {
   const words = fullName.trim().split(/\s+/).filter(Boolean)
   if (!words.length) return { ho: '', tenLotTen: '' }
-  return { ho: words[0], tenLotTen: words.slice(1).join(' ') }
+  const ho = words[0]
+  // 4+ words: chỉ lấy 2 chữ cuối làm tên lót + tên riêng (bỏ qua chữ đệm giữa như "Thị")
+  const tenLotTen = words.length >= 4
+    ? words.slice(-2).join(' ')
+    : words.slice(1).join(' ')
+  return { ho, tenLotTen }
 }
 
 // ─── Shared UI primitives ─────────────────────────────────────────────────────
