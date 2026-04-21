@@ -41,14 +41,6 @@ export default function BookInsight({ chunk }) {
           <div style={{ padding: '0 16px 16px', fontSize: 14, color: 'var(--text-1)', lineHeight: 1.75, fontWeight: 400 }}>
             {chunk.interpretation}
           </div>
-          <div style={{
-            margin: '0 16px 16px',
-            paddingTop: 10,
-            borderTop: '1px solid var(--border)',
-            fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic',
-          }}>
-            {chunk.source} · {chunk.chapter}
-          </div>
         </div>
       )}
     </div>

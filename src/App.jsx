@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import logo from './img/logo.png'
 import {
   getLifePathNumber,
   getBirthChart,
@@ -89,9 +88,6 @@ function PersonalYearCard({ entry, isCurrent }) {
           <hr style={{ border: 'none', borderTop: '1px solid var(--border)', marginBottom: 14 }} />
           <p style={{ fontSize: 14, color: 'var(--text-1)', lineHeight: 1.75, fontWeight: 400, marginBottom: 12 }}>
             {interp.interpretation}
-          </p>
-          <p style={{ fontSize: 11, color: 'var(--text-3)', fontStyle: 'italic' }}>
-            {interp.source} · {interp.chapter}
           </p>
         </>
       )}
@@ -185,11 +181,6 @@ export default function App() {
 
         {/* ── Top bar ── */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <img
-            src={logo}
-            alt="MayQ Share"
-            style={{ height: 72, objectFit: 'contain', marginBottom: 16 }}
-          />
           <div style={{ fontSize: 11, color: 'var(--accent)', letterSpacing: '0.2em', marginBottom: 8 }}>
             NHÂN SỐ HỌC PYTHAGOREAN
           </div>
@@ -370,7 +361,7 @@ export default function App() {
             </div>
 
             <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-3)', paddingBottom: 40 }}>
-              Nhân Số Học Pythagorean · Team MayQ Share
+              Nhân Số Học Pythagorean
             </p>
           </>
         )}
